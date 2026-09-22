@@ -46,7 +46,8 @@ resultado = ecualizacion_local(imagen, 1, 25, 20, 256)
 
 cv2_imshow(cv2.cvtColor(resultado, cv2.COLOR_GRAY2RGB))
 ```
-## Pregunta 3
+## Pregunta 3: Reescalado de imágenes
+
 ### Librerías necesarias
 
 - numpy
@@ -55,10 +56,22 @@ cv2_imshow(cv2.cvtColor(resultado, cv2.COLOR_GRAY2RGB))
 
 ### Descripción
 
-La función recibe tres parámetros:
+La función recibe tres parámetros: `imagen`, `factor` y `modo`. La imagen puede estar en escala de grises o en formato RGB. El parámetro `factor` corresponde al factor de reescalado que se quiere aplicar, mientras que `modo` permite escoger entre las interpolaciones de vecino más cercano y bilineal.
 
-- `imagen`
-- `factor`
-- `modo`
+### Ejemplo de uso
 
-Se recomienda entregar la imagen en formato RGB o en escala de grises. La función puede trabajar correctamente con cualquiera de los dos formatos. 
+```python
+imagen3 = cv2.imread("/content/P3_IMG_2387_crop.tif")
+imagen3 = cv2.cvtColor(imagen3, cv2.COLOR_BGR2GRAY)
+
+resultado_vecino = reescalado_interpolacionbi(
+    imagen3, 1.5, "vecino_mas_cercano"
+)
+
+resultado_bilineal = reescalado_interpolacionbi(
+    imagen3, 1.5, "bilineal"
+)
+
+cv2_imshow(resultado_vecino)
+cv2_imshow(resultado_bilineal)
+````
